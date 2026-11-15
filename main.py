@@ -4,7 +4,13 @@ from tkinter import messagebox
 from random import shuffle
 
 
+SYMBOLS = "!@#$%&*+?|/-_~"
+HEIGHT = 300
+WIDTH = 500
+
+
 password = ""
+
 
 def copy_text(_event):
     global password
@@ -29,7 +35,7 @@ def generate_password():
             messagebox.showerror('Length Limit', 'You have reached the length limit. Maximum length is 30.')
 
         else:
-            chars = list(string.ascii_letters + string.digits + "!@#$%&*+?|/-_~")
+            chars = list(string.ascii_letters + string.digits + SYMBOLS)
             shuffle(chars)
             for i in range(pw_len):
                 password += random.choice(chars)
@@ -44,7 +50,7 @@ def generate_password():
 
 root = CTk()
 root.wm_title("Password Generator")
-root.geometry('300x380')
+root.geometry(f'{WIDTH}x{HEIGHT}')
 root.resizable(False, False)
 
 pw_len_input = CTkEntry(root, placeholder_text='Password Length', font=('Arial', 20),width=200, height=50)
